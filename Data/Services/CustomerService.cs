@@ -13,14 +13,14 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
     // CREATE
     public async Task<bool> CreateCustomerAsync(CustomerRegistrationForm form)
     {
-        var customer = await GetCustomerEntityAsync(x => x.Email == form.CustomerEmail);
+        var customer = await GetCustomerEntityAsync(x => x.Email == form.Email);
         if (customer != null)
             return false;
 
         customer = new CustomerEntity()
         {
-            Name = form.CustomerName,
-            Email = form.CustomerEmail
+            Name = form.Name,
+            Email = form.Email
         };
         
         var result = await _customerRepository.CreateAsync(customer);
@@ -53,16 +53,16 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
     // UPDATE
     public async Task<Customer?> UpdateCustomerAsync(CustomerUpdateForm form)
     {
-        var customer = await GetCustomerEntityAsync(x => x.Id == form.CustomerId);
+        var customer = await GetCustomerEntityAsync(x => x.Id == form.Id);
         if (customer == null)
             return null;
         
-        customer.Name = form.CustomerName;
-        customer.Email = form.CustomerEmail;
+        customer.Name = form.Name;
+        customer.Email = form.Email;
 
         await _customerRepository.UpdateOneAsync(customer);
         
-        customer =  await _customerRepository.GetOneAsync(x => x.Id == form.CustomerId);
+        customer =  await _customerRepository.GetOneAsync(x => x.Id == form.Id);
         return customer !=null
             ? new Customer(customer.Id, customer.Name, customer.Email)
             : null;

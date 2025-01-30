@@ -1,3 +1,3 @@
 namespace Data.Dtos;
 
-public record Customer(int CustomerId, string CustomerName, string CustomerEmail);
+public record Customer(int Id, string Name, string Email);

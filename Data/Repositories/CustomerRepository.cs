@@ -58,11 +58,18 @@ public class CustomerRepository(DataContext context) : ICustomerRepository
     // DELETE
     public async Task<bool> DeleteOneAsync(Expression<Func<CustomerEntity, bool>> expression)
     {
-        var entity = await _context.Customers.FirstOrDefaultAsync(expression);
-        if (entity == null) 
+        try
+        {
+            var entity = await _context.Customers.FirstOrDefaultAsync(expression);
+            if (entity == null)
+                return false;
+            _context.Customers.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
             return false;
-        _context.Customers.Remove(entity);
-        await _context.SaveChangesAsync();
-        return true;
+        }
     }
 }
