@@ -10,6 +10,6 @@ public interface ICustomerService
     Task<bool> DeleteCustomerByIdAsync(int id);
     Task<Customer?> GetCustomerByEmailAsync(string email);
     Task<Customer?> GetCustomerByIdAsync(int id);
-    Task<IEnumerable<Customer>?> GetCustomersAsync();
+    Task<IEnumerable<Customer>> GetCustomersAsync();
     Task<Customer?> UpdateCustomerAsync(CustomerUpdateForm form);
 }

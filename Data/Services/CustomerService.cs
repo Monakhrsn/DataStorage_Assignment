@@ -2,7 +2,6 @@ using System.Linq.Expressions;
 using Data.Dtos;
 using Data.Entities;
 using Data.Interfaces;
-using Data.Repositories;
 
 namespace Data.Services;
 
@@ -28,7 +27,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
      }
 
     // READ
-    public async Task<IEnumerable<Customer>?> GetCustomersAsync()
+    public async Task<IEnumerable<Customer>> GetCustomersAsync()
     {
         var customers = await _customerRepository.GetAllAsync();
         return customers.Select(x => new Customer(x.Id, x.CustomerName, x.CustomerEmail));
