@@ -1,3 +1,3 @@
-namespace Data.Dtos;
+namespace Business.Dtos;
 
 public record CustomerRegistrationForm(string Name, string Email);

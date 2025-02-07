@@ -1,3 +1,4 @@
+using Business.Dtos;
 using Data.Dtos;
 using Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,7 @@ public class CustomersController(ICustomerService customerService) : ControllerB
         return Ok(result);
     }
          
-    [HttpPut()]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromBody] CustomerUpdateForm form)
     {
         if(!ModelState.IsValid)
@@ -47,7 +48,7 @@ public class CustomersController(ICustomerService customerService) : ControllerB
         return result != null ? Ok(result) : NotFound();
     }
     
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteCustomerById(int id)
     {
         var result = await _customerService.DeleteCustomerByIdAsync(id);

@@ -1,9 +1,10 @@
 using System.Linq.Expressions;
+using Business.Dtos;
 using Data.Dtos;
 using Data.Entities;
 using Data.Interfaces;
 
-namespace Data.Services;
+namespace Business.Services;
 
 public class CustomerService(ICustomerRepository customerRepository) : ICustomerService
 {
