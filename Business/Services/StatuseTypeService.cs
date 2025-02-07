@@ -1,7 +1,8 @@
+using Business.Interfaces;
 using Data.Dtos;
 using Data.Interfaces;
 
-namespace Data.Services;
+namespace Business.Services;
 
 public class StatusTypeService(IStatusTypeRepository statusTypeRepository) : IStatusTypeService
 {
