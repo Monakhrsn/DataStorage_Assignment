@@ -43,7 +43,14 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
 
     public async Task<Customer?> GetCustomerByEmailAsync(string email)
     {
+        Console.WriteLine($"Fetching customer by email: {email}");
         var customer = await GetCustomerEntityAsync(x => x.CustomerEmail == email);
+        
+        if (customer == null)
+        {
+            Console.WriteLine("Customer not found.");
+        }
+        
         return customer != null
             ? new Customer(customer.Id, customer.CustomerName, customer.CustomerEmail)
             : null;
@@ -54,7 +61,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
     {
         var customer = await GetCustomerEntityAsync(x => x.Id == form.Id);
         if (customer == null)
-            return null;
+            return null;       
         
         customer.CustomerName = form.Name;
         customer.CustomerEmail = form.Email;

@@ -1,3 +1,3 @@
 namespace Data.Dtos;
 
-public abstract record CustomerRegistrationForm(string Name, string Email);
+public record CustomerRegistrationForm(string Name, string Email);

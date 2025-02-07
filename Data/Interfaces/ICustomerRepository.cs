@@ -10,4 +10,4 @@ public interface ICustomerRepository
     Task<IEnumerable<CustomerEntity>> GetAllAsync();
     Task<CustomerEntity?> GetOneAsync(Expression<Func<CustomerEntity, bool>> expression);
     Task<bool> UpdateOneAsync(CustomerEntity updatedEntity);
-}
+} 

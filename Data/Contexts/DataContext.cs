@@ -14,9 +14,9 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<StatusTypeEntity>().HasData(
-            new StatusTypeEntity { StatusName = "Not Started" },
-            new StatusTypeEntity { StatusName = "In Progress" },
-            new StatusTypeEntity { StatusName = "Completed" }
+            new StatusTypeEntity { Id = 1, StatusName = "Not Started" },
+            new StatusTypeEntity { Id = 2,  StatusName = "In Progress" },
+            new StatusTypeEntity { Id = 3, StatusName = "Completed" }
         );
     }
 }
