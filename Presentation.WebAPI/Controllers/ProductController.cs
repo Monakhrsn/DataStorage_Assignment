@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ public class ProductController(IProductService productService) : ControllerBase
             var products = await _productService.GetProductsAsync();
             return Ok(products);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine("Error in GetProducts: { e.Message }");
+            Debug.WriteLine($"Error in GetProducts: { ex.Message }");
         }
         return StatusCode(500, new { error = "Ann error occured while fetching products"});
     }

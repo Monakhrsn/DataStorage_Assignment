@@ -2,7 +2,7 @@ using Data.Entities;
 
 namespace Data.Interfaces;
 
-public interface IProductRepository
+public interface IProductRepository : IBaseRepository<ProductEntity>
 {
-    Task<IEnumerable<ProductEntity>> GetAllAsync();
+    IEnumerable<ProductEntity> GetAllProductsAsync();
 }
