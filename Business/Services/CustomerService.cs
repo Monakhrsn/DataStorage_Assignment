@@ -3,6 +3,7 @@ using Business.Dtos;
 using Data.Dtos;
 using Data.Entities;
 using Data.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Business.Services;
 
@@ -24,7 +25,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
         };
         
         var result = await _customerRepository.CreateAsync(customer);
-        return result;
+        return result != null;
      }
 
     // READ
@@ -41,38 +42,19 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
             ? new Customer(customer.Id, customer.CustomerName, customer.CustomerEmail)
             : null;
     }
-
-    public async Task<Customer?> GetCustomerByEmailAsync(string email)
-    {
-        Console.WriteLine($"Fetching customer by email: {email}");
-        var customer = await GetCustomerEntityAsync(x => x.CustomerEmail == email);
-        
-        if (customer == null)
-        {
-            Console.WriteLine("Customer not found.");
-        }
-        
-        return customer != null
-            ? new Customer(customer.Id, customer.CustomerName, customer.CustomerEmail)
-            : null;
-    }
     
     // UPDATE
-    public async Task<Customer?> UpdateCustomerAsync(CustomerUpdateForm form)
+    public async Task<Customer?> UpdateCustomerAsync(CustomerUpdateForm form, int id)
     {
-        var customer = await GetCustomerEntityAsync(x => x.Id == form.Id);
+        var customer = await GetCustomerEntityAsync(x => x.Id == id);
         if (customer == null)
             return null;       
         
         customer.CustomerName = form.Name;
         customer.CustomerEmail = form.Email;
 
-        await _customerRepository.UpdateOneAsync(customer);
-        
-        customer =  await _customerRepository.GetOneAsync(x => x.Id == form.Id);
-        return customer !=null
-            ? new Customer(customer.Id, customer.CustomerName, customer.CustomerEmail)
-            : null;
+        customer = await _customerRepository.UpdateOneAsync(c => c.Id == id, customer);
+        return new Customer(customer.Id, customer.CustomerName, customer.CustomerEmail);
     }
     
     // DELETE

@@ -39,12 +39,12 @@ public class CustomersController(ICustomerService customerService) : ControllerB
     }
          
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update([FromBody] CustomerUpdateForm form)
+    public async Task<IActionResult> Update([FromBody] CustomerUpdateForm form, int id)
     {
         if(!ModelState.IsValid)
             return BadRequest();
-          
-        var result = await _customerService.UpdateCustomerAsync(form);
+        
+        var result = await _customerService.UpdateCustomerAsync(form, id);
         return result != null ? Ok(result) : NotFound();
     }
     
