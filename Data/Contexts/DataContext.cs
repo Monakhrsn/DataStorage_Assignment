@@ -9,10 +9,21 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<ProductEntity> Products { get; set; }
     public DbSet<StatusTypeEntity> StatusTypes { get; set; }
     public DbSet<UserEntity> Users { get; set; }
+    public DbSet<RoleEntity> Roles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<UserEntity>()
+            .HasOne(u => u.Role)
+            .WithMany(r => r.Users)
+            .HasForeignKey(u => u.RoleId);
+
+        modelBuilder.Entity<RoleEntity>().HasData(
+            new RoleEntity { Id = 1, RoleName = "Admin" },
+            new RoleEntity { Id = 2, RoleName = "Customer" }
+        );
         
         modelBuilder.Entity<ProductEntity>().HasData(
             new ProductEntity { Id = 1, ProductName = "Product A", Price = 10.99m },

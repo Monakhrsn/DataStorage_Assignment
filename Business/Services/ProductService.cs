@@ -8,7 +8,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 {
     public async Task<IEnumerable<Product>> GetProductsAsync()
     {
-      var productList = await productRepository.GetAllAsync();
-      return productList.Select(p => new Product(p.Id, p.ProductName, p.Price));
+        var productList = await productRepository.GetAllAsync();
+        return productList.Select(p => new Product(p.Id, p.ProductName, p.Price));
     }
 }
