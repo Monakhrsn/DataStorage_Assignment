@@ -4,7 +4,7 @@ using Data.Interfaces;
 
 namespace Data.Repositories;
 
-public class CustomerRepository(DataContext context) : BaseRepository<CustomerEntity>(context), ICustomerRepository
+public class RoleRepository(DataContext context) : BaseRepository<RoleEntity>(context), IRoleRepository
 {
     private readonly DataContext _context = context;
 }

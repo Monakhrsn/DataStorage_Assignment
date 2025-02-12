@@ -16,4 +16,7 @@ public class UserEntity
     // Many-to-one-relationship
     [ForeignKey("RoleId")]
     public RoleEntity Role { get; set; } = null!;
+    
+    // One-to-many relationship
+    public ICollection<ProjectEntity> Projects { get; set; }
 }

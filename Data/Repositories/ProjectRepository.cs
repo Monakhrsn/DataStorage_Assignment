@@ -4,8 +4,7 @@ using Data.Interfaces;
 
 namespace Data.Repositories;
 
-public class CustomerRepository(DataContext context) : BaseRepository<CustomerEntity>(context), ICustomerRepository
+public class ProjectRepository(DataContext context) 
 {
     private readonly DataContext _context = context;
 }
-

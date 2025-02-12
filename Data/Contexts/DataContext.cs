@@ -21,14 +21,13 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
             .HasForeignKey(u => u.RoleId);
 
         modelBuilder.Entity<RoleEntity>().HasData(
-            new RoleEntity { Id = 1, RoleName = "Admin" },
-            new RoleEntity { Id = 2, RoleName = "Customer" }
+            new RoleEntity { Id = 1, RoleName = "Project manager" },
+            new RoleEntity { Id = 2, RoleName = "Consultant" }
         );
         
         modelBuilder.Entity<ProductEntity>().HasData(
-            new ProductEntity { Id = 1, ProductName = "Product A", Price = 10.99m },
-            new ProductEntity { Id = 2, ProductName = "Product B", Price = 20.99m },
-            new ProductEntity { Id = 3, ProductName = "Product C", Price = 30.99m }
+            new ProductEntity { Id = 1, ProductName = "Consult time", Price = 1000 },
+            new ProductEntity { Id = 2, ProductName = "Education", Price = 2000 }
             );
         
         modelBuilder.Entity<StatusTypeEntity>().HasData(

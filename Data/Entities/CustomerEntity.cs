@@ -10,4 +10,7 @@ public class CustomerEntity
     public int Id { get; set; }
     public string CustomerName { get; set; } = null!;
     public string CustomerEmail { get; set; } = null!;
+    
+    // One-to-many relationship
+    public ICollection<ProjectEntity> Projects { get; set; }
 }

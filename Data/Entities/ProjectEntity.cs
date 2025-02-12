@@ -16,19 +16,20 @@ public class ProjectEntity
     [Column(TypeName = "date")]
     public DateTime? EndDate { get; set; }
     
-    
+    // Many-to-one-relationships
+    [ForeignKey("CustomerId")]
     public int CustomerId { get; set; }
     public CustomerEntity Customer { get; set; } = null!;
     
+    [ForeignKey("StatusTypeId")]
     public int StatusId { get; set; }
     public StatusTypeEntity Status { get; set; } = null!;
-
     
+    [ForeignKey("UserId")]
     public int UserId { get; set; }
     public UserEntity User { get; set; } = null!;
-
     
+    [ForeignKey("ProductId")]
     public int ProductId { get; set; }
     public ProductEntity Product { get; set; } = null!;
-
 }

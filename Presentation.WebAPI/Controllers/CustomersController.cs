@@ -23,7 +23,7 @@ public class CustomersController(ICustomerService customerService) : ControllerB
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCustomers()
+    public async Task<IActionResult> GetCustomers()   
     {
         var result = await _customerService.GetCustomersAsync();
         return Ok(result);

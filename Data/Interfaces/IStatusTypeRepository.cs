@@ -2,7 +2,6 @@ using Data.Entities;
 
 namespace Data.Interfaces;
 
-public interface IStatusTypeRepository
+public interface IStatusTypeRepository : IBaseRepository<StatusTypeEntity>
 {
-    Task<IEnumerable<StatusTypeEntity>> GetAllAsync();
 }

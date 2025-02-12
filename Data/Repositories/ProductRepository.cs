@@ -7,8 +7,5 @@ namespace Data.Repositories;
 public class ProductRepository(DataContext context) : BaseRepository<ProductEntity>(context), IProductRepository
 {
     private readonly DataContext _context = context;
-   public IEnumerable<ProductEntity> GetAllProductsAsync()
-   {
-       return null;
-   }
+  
 }
