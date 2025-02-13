@@ -25,6 +25,12 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
             new RoleEntity { Id = 2, RoleName = "Consultant" }
         );
         
+        modelBuilder.Entity<UserEntity>().HasData(
+            new UserEntity() { Id = 1, UserFirstName = "Sara", UserLastName = "McDonald", UserEmail = "Sara@gmail.com", RoleId = 1},
+            new UserEntity() { Id = 2, UserFirstName = "John", UserLastName = "Doe", UserEmail = "John@gmail.com", RoleId = 2}
+
+        );
+        
         modelBuilder.Entity<ProductEntity>().HasData(
             new ProductEntity { Id = 1, ProductName = "Consult time", Price = 1000 },
             new ProductEntity { Id = 2, ProductName = "Education", Price = 2000 }

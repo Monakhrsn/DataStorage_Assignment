@@ -7,9 +7,9 @@ public record Project(
     DateTime StartDate,
     DateTime? EndDate,
     
-    int CustomerId,
-    int StatusId,   
-    int UserId,
-    int ProductId
+   int CustomerId, 
+   int StatusId,  
+   int UserId, 
+   int ProductId
     );
     

@@ -20,7 +20,11 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
         project = new ProjectEntity()
         {
             Title = form.Title,
-            Description = form.Description
+            Description = form.Description,
+            CustomerId = form.CustomerId,
+            ProductId = form.ProductId,
+            UserId = form.UserId,
+            StatusId = form.StatusId
         };
         
         var result = await _projectRepository.CreateAsync(project);
@@ -38,8 +42,8 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             p.StartDate,
             p.EndDate,
             p.CustomerId,
+            p.Status.Id,
             p.UserId,
-            p.StatusId,
             p.ProductId
             ));
     }
@@ -55,9 +59,9 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
                 project.StartDate,
                 project.EndDate,
                 project.CustomerId,
+                project.Status.Id,
                 project.UserId,
-                project.StatusId,
-                project.ProductId
+                project.Product.Id
                 )
             : null;
     }
@@ -71,6 +75,12 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
         
         project.Title = form.Title;
         project.Description = form.Description;
+        project.StartDate = form.StartDate;
+        project.EndDate = form.EndDate;
+      //  project.Customer.Id = form.CustomerId;
+      //  project.Status.Id = form.StatusId;
+      //  project.UserId = form.UserId;
+      //  project.Product.Id = form.ProductId;
 
         project = await _projectRepository.UpdateOneAsync(p => p.Id == id, project);
         return new Project(
@@ -80,10 +90,20 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             project.StartDate,
             project.EndDate,
             project.CustomerId,
-            project.UserId,
             project.StatusId,
+            project.UserId,
             project.ProductId
             );
+    }
+    // DELETE
+    public async Task<bool> DeleteProjectByIdAsync(int id)
+    {
+        var project = await GetProjectEntityAsync(x => x.Id == id);
+        if (project == null)
+            return false;
+        
+        var result = await _projectRepository.DeleteOneAsync(p => p.Id == project.Id);
+        return result;
     }
     
     private async Task<ProjectEntity?> GetProjectEntityAsync(Expression<Func<ProjectEntity, bool>> predicate)

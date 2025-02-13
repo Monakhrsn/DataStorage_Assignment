@@ -7,19 +7,8 @@ public record ProjectRegistrationForm(
     DateTime EndDate,
     
     int CustomerId,
-    string CustomerName,
-    string CustomerEmail,
-    
     int StatusId,
-    string StatusName,
-    
     int UserId,
-    string FirstName,
-    string LastName,
-    string Email,
-    
-    int ProductId,
-    string ProductName,
-    string ProductPrice
+    int ProductId
     );
 

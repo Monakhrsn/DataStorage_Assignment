@@ -13,15 +13,15 @@ public class UserService(IUserRepository userRepository) : IUserService
     //CREATE
     public async Task<bool> CreateUserAsync(UserRegistrationForm form)
     {
-        var user = await GetUserEntityAsync(u => u.Email == form.Email);
+        var user = await GetUserEntityAsync(u => u.UserEmail == form.Email);
         if (user != null)
             return false;
 
         user = new UserEntity()
         {
-            FirstName = form.FirstName,
-            LastName = form.LastName,
-            Email = form.Email,
+            UserFirstName = form.FirstName,
+            UserLastName = form.LastName,
+            UserEmail = form.Email,
         };
         
         var result = await _userRepository.CreateAsync(user);
@@ -33,9 +33,9 @@ public class UserService(IUserRepository userRepository) : IUserService
         var users = await _userRepository.GetAllAsync();
         return users.Select(u => new User(
             u.Id,
-            u.FirstName,
-            u.LastName,
-            u.Email,
+            u.UserFirstName,
+            u.UserLastName,
+            u.UserEmail,
             u.Role.RoleName,
             u.RoleId));
     }
@@ -51,16 +51,16 @@ public class UserService(IUserRepository userRepository) : IUserService
         if (user == null)
             return null;       
         
-        user.FirstName= form.FirstName;
-        user.LastName = form.LastName;
-        user.Email = form.Email;
+        user.UserFirstName= form.FirstName;
+        user.UserLastName = form.LastName;
+        user.UserEmail = form.Email;
 
         user = await _userRepository.UpdateOneAsync(u => u.Id == id, user);
         return new User(
         user.Id,
-        user.FirstName,
-        user.LastName,
-        user.Email,
+        user.UserFirstName,
+        user.UserLastName,
+        user.UserEmail,
         user.Role.RoleName,
         user.RoleId
         );

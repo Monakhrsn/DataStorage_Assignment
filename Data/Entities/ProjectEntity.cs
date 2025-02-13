@@ -25,7 +25,7 @@ public class ProjectEntity
     public int StatusId { get; set; }
     public StatusTypeEntity Status { get; set; } = null!;
     
-    [ForeignKey("UserId")]
+    [ForeignKey("UserId")] 
     public int UserId { get; set; }
     public UserEntity User { get; set; } = null!;
     

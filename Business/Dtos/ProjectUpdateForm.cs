@@ -6,16 +6,9 @@ public record ProjectUpdateForm(
     DateTime StartDate,
     DateTime EndDate,
     
-    string CustomerName,
-    string CustomerEmail,
-    
-    string StatusName,
-    
-    string FirstName,
-    string LastName,
-    string Email,
-    
-    string ProductName,
-    string ProductPrice
+    int CustomerId,
+    int StatusId,
+    int UserId,
+    int ProductId
     );
 
