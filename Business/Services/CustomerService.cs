@@ -32,7 +32,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
     public async Task<IEnumerable<Customer>> GetCustomersAsync()
     {
         var customers = await _customerRepository.GetAllAsync();
-        return customers.Select(x => new Customer(x.Id, x.CustomerName, x.CustomerEmail));
+        return customers.Select(c => new Customer(c.Id, c.CustomerName, c.CustomerEmail));
     }
 
     public async Task<Customer?> GetCustomerByIdAsync(int id)

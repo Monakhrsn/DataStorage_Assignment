@@ -21,6 +21,8 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
         {
             Title = form.Title,
             Description = form.Description,
+            StartDate = form.StartDate!.Value,
+            EndDate = form.EndDate,
             CustomerId = form.CustomerId,
             ProductId = form.ProductId,
             UserId = form.UserId,
@@ -42,7 +44,7 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             p.StartDate,
             p.EndDate,
             p.CustomerId,
-            p.Status.Id,
+            p.Status != null ? p.Status.Id : throw new Exception($"Status is null for project {p.Id}"),
             p.UserId,
             p.ProductId
             ));

@@ -1,10 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Business.Dtos;
 
 public record ProjectRegistrationForm(
+    [Required]
     string Title,
     string Description,
-    DateTime StartDate,
-    DateTime EndDate,
+    [Required]
+    DateTime? StartDate,
+    DateTime? EndDate,
     
     int CustomerId,
     int StatusId,
