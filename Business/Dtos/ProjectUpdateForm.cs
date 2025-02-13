@@ -2,9 +2,9 @@ namespace Business.Dtos;
 
 public record ProjectUpdateForm(
     string Title,
-    string Description,
+    string? Description,
     DateTime StartDate,
-    DateTime EndDate,
+    DateTime? EndDate,
     
     int CustomerId,
     int StatusId,
