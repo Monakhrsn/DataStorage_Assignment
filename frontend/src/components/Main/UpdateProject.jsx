@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import Stack from "react-bootstrap/Stack";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const UpdateProject = () => {
@@ -166,4 +167,4 @@ const UpdateProject = () => {
   );
 };
 
-export default CreateProject;
+export default UpdateProject;
