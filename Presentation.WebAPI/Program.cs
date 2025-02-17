@@ -46,6 +46,4 @@ app.UseAuthorization();
 app.MapControllers();
 app.UseCors();
 
-app.MapGet("/", () => Results.Content("<h1>Welcome eee to the WebAPI!</h1><p><a href='/api/customers'>View Customers</a></p>", "text/html"));
-
 app.Run();
