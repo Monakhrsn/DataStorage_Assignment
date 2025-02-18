@@ -21,8 +21,6 @@ const Projects = () => {
       const fetchedResponse = await res.json();
       setProjects(fetchedResponse);
 
-      console.log("Fetched Projects:", fetchedResponse);
-
     } catch (error) {
       setError(error);
     }
