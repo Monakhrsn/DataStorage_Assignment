@@ -25,7 +25,7 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             EndDate = form.EndDate,
             CustomerId = form.CustomerId,
             ProductId = form.ProductId,
-            UserId = form.UserId,
+            ManagerId = form.ManagerId,
             StatusId = form.StatusId
         };
         
@@ -45,7 +45,7 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             p.EndDate,
             p.CustomerId,
             p.Status != null ? p.Status.Id : throw new Exception($"Status is null for project {p.Id}"),
-            p.UserId,
+            p.ManagerId,
             p.ProductId
             ));
     }
@@ -62,7 +62,7 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
                 project.EndDate,
                 project.CustomerId,
                 project.Status.Id,
-                project.UserId,
+                project.ManagerId,
                 project.Product.Id
                 )
             : null;
@@ -93,7 +93,7 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
             project.EndDate,
             project.CustomerId,
             project.StatusId,
-            project.UserId,
+            project.ManagerId,
             project.ProductId
             );
     }

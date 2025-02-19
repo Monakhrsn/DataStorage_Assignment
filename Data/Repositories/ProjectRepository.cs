@@ -14,7 +14,7 @@ public class ProjectRepository(DataContext context) : BaseRepository<ProjectEnti
     {
         return await _context.Projects
             .Include(p => p.Status)
-            .Include(p => p.User)
+            .Include(p => p.Manager)
             .Include(p => p.Customer)
             .Include(p => p.Product)
             .ToListAsync();
@@ -24,7 +24,7 @@ public class ProjectRepository(DataContext context) : BaseRepository<ProjectEnti
     {
         return await _context.Projects
             .Include(p => p.Status)
-            .Include(p => p.User)
+            .Include(p => p.Manager)
             .Include(p => p.Customer)
             .Include(p => p.Product)
             .FirstOrDefaultAsync(predicate);

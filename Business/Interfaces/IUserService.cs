@@ -9,4 +9,6 @@ public interface IUserService
   //  Task<bool> DeleteUserByEmailAsync(string email);
     Task<bool> DeleteUserByIdAsync(int id);
     Task<User?> UpdateUserAsync(UserUpdateForm form, int id);
+    Task<IEnumerable<User>> GetUsersWithManagerRoleAsync();
+
 }

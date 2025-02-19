@@ -26,9 +26,9 @@ public class ProjectEntity
     public int StatusId { get; set; }
     public StatusTypeEntity Status { get; set; } = null!;
     
-    [ForeignKey("UserId")] 
-    public int UserId { get; set; }
-    public UserEntity User { get; set; } = null!;
+    [ForeignKey("ManagerId")] 
+    public int ManagerId { get; set; }
+    public UserEntity Manager { get; set; } = null!;
     
     [ForeignKey("ProductId")]
     public int ProductId { get; set; }

@@ -27,6 +27,13 @@ public class UserController(IUserService userService) : ControllerBase
         return Ok(result);
     }
     
+    [HttpGet("managers")]
+    public async Task<IActionResult> GetManagers()   
+    {
+        var result = await _userService.GetUsersWithManagerRoleAsync();
+        return Ok(result);
+    }
+    
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromBody] UserUpdateForm form, int id)
     {

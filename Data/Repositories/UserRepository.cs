@@ -21,4 +21,12 @@ public class UserRepository(DataContext context) : BaseRepository<UserEntity>(co
     {
         return await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(expression);
     }
+    
+    public async Task<IEnumerable<UserEntity>> GetUsersByRoleAsync(int id)
+    {
+        return await _context.Users.Include(u => u.Role)
+            .Include(u => u.Role) 
+            .Where(u => u.Role.Id == id)
+            .ToListAsync();
+    }
 }

@@ -11,6 +11,7 @@ const CreateProject = () => {
   const [status, setStatus] = useState(null);
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const [managers, setManagers] = useState([]);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -73,6 +74,28 @@ const CreateProject = () => {
     FetchProducts();
   }, []);
 
+  const FetchUsersWithManagerRole = async () => {
+    try { 
+      setError(null);
+
+      const res = await fetch(
+        "http://localhost:5018/api/users/managers"
+      )
+
+      if (!res.ok) {
+        throw new Error(`An error occured! Status: ${res.status}`)
+      }
+
+      setManagers(await res.json());
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  useEffect(() => {
+    FetchUsersWithManagerRole();
+  }, []);
+
 
   return (
     <Container className="bg-light text-dark">
@@ -126,15 +149,25 @@ const CreateProject = () => {
                 <Form.Control required type="text" placeholder="hours" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
+
+
               <Form.Group as={Col} md="4" controlId="validationCustom02">
                 <Form.Label>Project manager</Form.Label>
-                <Form.Control
+                <Form.Select
                   required
-                  type="text"
-                  placeholder="project manager"
-                />
+                >
+                <option value="">Select a project Manager</option>
+                {managers.map((manager) => (
+                  <option key={manager.id} value={manager.id}>
+                    {manager.firstName} {manager.lastName}
+                  </option>
+                ))}
+                </Form.Select>
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
+
+
+
               <Form.Group as={Col} md="4" controlId="validationCustomUsername">
                 <Form.Label>Description</Form.Label>
                 <InputGroup hasValidation>

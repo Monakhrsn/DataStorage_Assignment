@@ -12,7 +12,7 @@ public record ProjectRegistrationForm(
     
     int CustomerId,
     int StatusId,
-    int UserId,
+    int ManagerId,
     int ProductId
     );
 

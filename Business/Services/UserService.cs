@@ -39,7 +39,22 @@ public class UserService(IUserRepository userRepository) : IUserService
             u.Role.RoleName,
             u.RoleId));
     }
-
+    
+    
+    // GET USERS WITH MANAGER ROLE
+    public async Task<IEnumerable<User>> GetUsersWithManagerRoleAsync()
+    {
+        var users = await _userRepository.GetUsersByRoleAsync(1);
+        return users.Select(u => new User(
+            u.Id,
+            u.UserFirstName,
+            u.UserLastName,
+            u.UserEmail,
+            u.Role.RoleName,
+            u.RoleId
+        ));
+    }
+    
     public Task<bool> DeleteUserByIdAsync(int id)
     {
         throw new NotImplementedException();
