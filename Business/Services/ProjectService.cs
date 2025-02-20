@@ -3,6 +3,8 @@ using Business.Dtos;
 using Business.Interfaces;
 using Data.Entities;
 using Data.Interfaces;
+using Microsoft.IdentityModel.Tokens;
+using Presentation.WebAPI.Exceptions;
 
 namespace Business.Services;
 
@@ -15,14 +17,14 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
     {
         var project = await GetProjectEntityAsync(p => p.Title == form.Title);
         if (project != null)
-            return false;
+            throw new ProjectAlreadyExistedException();
 
         project = new ProjectEntity()
         {
             Title = form.Title,
             Description = form.Description,
-            StartDate = form.StartDate!.Value,
-            EndDate = form.EndDate,
+            StartDate = DateTime.Parse(form.StartDate),
+            EndDate = form.EndDate.IsNullOrEmpty() ? null : DateTime.Parse(form.EndDate!),
             CustomerId = form.CustomerId,
             ProductId = form.ProductId,
             ManagerId = form.ManagerId,

@@ -1,6 +1,7 @@
 using Business.Dtos;
 using Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.WebAPI.Exceptions;
 
 namespace Presentation.WebAPI.Controllers;
 
@@ -17,8 +18,16 @@ public class ProjectsController(IProjectService projectService) : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest();
 
-        var result = await _projectService.CreateProjectAsync(form);
-        return result ? Ok() : Problem();
+        try
+        {
+            var result = await _projectService.CreateProjectAsync(form);
+            return result ? Ok(result) : Problem("Something went wrong for creating project");
+        }
+        catch (ProjectAlreadyExistedException e)
+        {
+            // return Problem($"Project with name {form.Title} already exists", statusCode: 409);
+            return Conflict();
+        }
     }
     
     [HttpGet]

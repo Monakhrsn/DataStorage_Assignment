@@ -7,8 +7,8 @@ public record ProjectRegistrationForm(
     string Title,
     string Description,
     [Required]
-    DateTime? StartDate,
-    DateTime? EndDate,
+    string StartDate,
+    string? EndDate,
     
     int CustomerId,
     int StatusId,

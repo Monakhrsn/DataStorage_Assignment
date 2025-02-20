@@ -17,10 +17,10 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
         base.OnModelCreating(modelBuilder);
         
         modelBuilder.Entity<CustomerEntity>().HasData(
-            new CustomerEntity { Id = 1, CustomerName = "Rosa Hadipour", CustomerEmail = "Rosa@gmail.com" },
-            new CustomerEntity { Id = 2, CustomerName = "Anna Erikson", CustomerEmail = "Anna@gmail.com" },
-            new CustomerEntity { Id = 2, CustomerName = "Liam Moghadam", CustomerEmail = "Liam@gmail.com" },
-            new CustomerEntity { Id = 2, CustomerName = "Mahi Roohbakhsh", CustomerEmail = "Mahi@gmail.com" }
+            new CustomerEntity { Id = 2, CustomerName = "Rosa AB", CustomerEmail = "Rosa@gmail.com" },
+            new CustomerEntity { Id = 3, CustomerName = "Anna Erikson", CustomerEmail = "Anna@gmail.com" },
+            new CustomerEntity { Id = 4, CustomerName = "Liam AB", CustomerEmail = "Liam@gmail.com" },
+            new CustomerEntity { Id = 5, CustomerName = "Mahi Roohbakhsh", CustomerEmail = "Mahi@gmail.com" }
             );
         
         
