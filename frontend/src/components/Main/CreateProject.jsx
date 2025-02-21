@@ -8,9 +8,9 @@ import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
 
 const CreateProject = () => {
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [error, setError] = useState(null);
-  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     title:"",
     startDate: "",
@@ -23,10 +23,7 @@ const CreateProject = () => {
   const [managers, setManagers] = useState([]);
   const [product, setProduct] = useState([]);
   const [status, setStatus] = useState([]);
-  const [selectedProductId, setSelectedProductId] = useState("");
   const [validated, setValidated] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -194,7 +191,7 @@ const CreateProject = () => {
                   <Form.Control
                     value={formData.startDate} 
                     onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                    type="text"
+                    type="date"
                     placeholder="Start date"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -209,7 +206,7 @@ const CreateProject = () => {
                 <Form.Control 
                 value={formData.endDate} 
                 onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-                type="text" 
+                type="date" 
                 placeholder="End date" 
                 />
               </Form.Group>
