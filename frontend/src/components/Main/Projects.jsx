@@ -16,8 +16,6 @@ const Projects = () => {
   };
 
   const handleSelect = (id) => {
-    console.log("clicked")
-    console.log(`Navigating to update page for project ID: ${id}`);
     navigate(`/update-project/${id}`);
   }
 
@@ -62,6 +60,7 @@ const Projects = () => {
           key={project.id} 
           onClick={() => handleSelect(project.id)} 
           className="d-flex justify-content-between align-items-center"
+          style={{ cursor: "pointer" }}
           >
           {project.title}
           <FontAwesomeIcon

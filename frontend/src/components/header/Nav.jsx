@@ -17,7 +17,7 @@ const Nav = () => {
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <span>Hans Mattin AB</span>
+          <span>Mattin-Lassei Group AB</span>
         </Navbar.Brand>
         <div className="d-flex justify-content-between gap-2">
           <Button variant="secondary" className="rounded-pill px-3">

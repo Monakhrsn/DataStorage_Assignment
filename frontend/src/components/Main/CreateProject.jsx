@@ -271,7 +271,7 @@ const CreateProject = () => {
             >
               <option value="">Select a product</option>
               {product.map((p) => (
-                <option key={p.id} value={p.id}>{p.name}</option>
+                <option key={p.id} value={p.id}>{p.name} time: {p.price} US$/hr</option>
               ))}
             </Form.Select>
 
@@ -288,7 +288,7 @@ const CreateProject = () => {
                 </option>
               ))}
             </Form.Select>
-            <Col className="d-flex gap-2">
+            <Col className="d-flex gap-2 mt-3">
               <Button variant="secondary" className="rounded-pill px-3">
                 Cancle
               </Button>

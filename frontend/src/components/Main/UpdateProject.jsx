@@ -54,8 +54,8 @@ const UpdateProject = () => {
 
       setFormData({
         title: fetchedProject.title,
-        startDate: fetchedProject.startDate,
-        endDate: fetchedProject.endDate || "",
+        startDate: fetchProject.startDate ? fetchedProject.startDate.split("T")[0] : "",
+        endDate: fetchedProject.endDate ? fetchedProject.endDate.split("T")[0] : "",
         description: fetchedProject.description,
         statusId: fetchedProject.statusId,
         productId: fetchedProject.productId,
@@ -128,8 +128,8 @@ const UpdateProject = () => {
 
       setFormData({
         title: fetchedUpdatedResponse.title,
-        startDate: fetchedUpdatedResponse.startDate,
-        endDate: fetchedUpdatedResponse.endDate,
+        startDate: fetchedUpdatedResponse.startDate ? fetchedUpdatedResponse.startDate.split("T")[0] : "",
+        endDate: fetchedUpdatedResponse.endDate ? fetchedUpdatedResponse.endDate.split("T")[0] : "",
         description: fetchedUpdatedResponse.description,
         statusId: fetchedUpdatedResponse.statusId,
         productId: fetchedUpdatedResponse.productId,
@@ -181,7 +181,7 @@ const UpdateProject = () => {
                     name="startDate"
                     value={formData.startDate}
                     onChange={handleChange}
-                    type="text"
+                    type="date"
                     disabled={!isEditing}
                     required
                   />
@@ -196,7 +196,7 @@ const UpdateProject = () => {
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleChange}
-                  type="text"
+                  type="date"
                   disabled={!isEditing}
                 />
               </Form.Group>

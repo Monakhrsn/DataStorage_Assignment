@@ -25,7 +25,7 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
         
         
         modelBuilder.Entity<ProductEntity>().HasData(
-            new ProductEntity { Id = 1, ProductName = "Consult time", Price = 1000 },
+            new ProductEntity { Id = 1, ProductName = "Consulting", Price = 1000},
             new ProductEntity { Id = 2, ProductName = "Education", Price = 2000 }
         );
 
@@ -35,8 +35,10 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
             .HasForeignKey(u => u.RoleId);
         
         modelBuilder.Entity<UserEntity>().HasData(
-            new UserEntity() { Id = 1, UserFirstName = "Sara", UserLastName = "McDonald", UserEmail = "Sara@gmail.com", RoleId = 1},
-            new UserEntity() { Id = 2, UserFirstName = "John", UserLastName = "Doe", UserEmail = "John@gmail.com", RoleId = 2}
+            new UserEntity() { Id = 1, UserFirstName = "Sara", UserLastName = "Mio", UserEmail = "Sara@gmail.com", RoleId = 1},
+            new UserEntity() { Id = 2, UserFirstName = "John", UserLastName = "Doe", UserEmail = "John@gmail.com", RoleId = 2},
+            new UserEntity() { Id = 3, UserFirstName = "Alex", UserLastName = "Peterson", UserEmail = "Alex@gmail.com", RoleId = 1},
+            new UserEntity() { Id = 4, UserFirstName = "Peter", UserLastName = "Simpson", UserEmail = "Peter@gmail.com", RoleId = 2}
         );
 
         modelBuilder.Entity<RoleEntity>().HasData(
