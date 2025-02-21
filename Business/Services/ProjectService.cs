@@ -79,12 +79,12 @@ public class ProjectService(IProjectRepository projectRepository): IProjectServi
         
         project.Title = form.Title;
         project.Description = form.Description;
-        project.StartDate = form.StartDate;
-        project.EndDate = form.EndDate;
-      //  project.Customer.Id = form.CustomerId;
-      //  project.Status.Id = form.StatusId;
-      //  project.UserId = form.UserId;
-      //  project.Product.Id = form.ProductId;
+        project.StartDate = DateTime.Parse(form.StartDate);
+        project.EndDate = form.EndDate.IsNullOrEmpty() ? null : DateTime.Parse(form.EndDate!);
+        project.CustomerId = form.CustomerId;
+        project.StatusId = form.StatusId;
+        project.ManagerId = form.ManagerId;
+        project.ProductId = form.ProductId;
 
         project = await _projectRepository.UpdateOneAsync(p => p.Id == id, project);
         return new Project(
