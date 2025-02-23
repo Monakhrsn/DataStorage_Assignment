@@ -54,7 +54,7 @@ const UpdateProject = () => {
 
       setFormData({
         title: fetchedProject.title,
-        startDate: fetchProject.startDate ? fetchedProject.startDate.split("T")[0] : "",
+        startDate: fetchedProject.startDate ? fetchedProject.startDate.split("T")[0] : "",
         endDate: fetchedProject.endDate ? fetchedProject.endDate.split("T")[0] : "",
         description: fetchedProject.description,
         statusId: fetchedProject.statusId,

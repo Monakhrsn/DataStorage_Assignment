@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250219100136_AddHourPropertyToProductEntity")]
-    partial class AddHourPropertyToProductEntity
+    [Migration("20250223164634_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,7 +103,7 @@ namespace Data.Migrations
                             Id = 1,
                             Hour = 0,
                             Price = 1000m,
-                            ProductName = "Consult time"
+                            ProductName = "Consulting"
                         },
                         new
                         {
@@ -259,7 +259,7 @@ namespace Data.Migrations
                             RoleId = 1,
                             UserEmail = "Sara@gmail.com",
                             UserFirstName = "Sara",
-                            UserLastName = "McDonald"
+                            UserLastName = "Mio"
                         },
                         new
                         {
@@ -268,6 +268,22 @@ namespace Data.Migrations
                             UserEmail = "John@gmail.com",
                             UserFirstName = "John",
                             UserLastName = "Doe"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleId = 1,
+                            UserEmail = "Alex@gmail.com",
+                            UserFirstName = "Alex",
+                            UserLastName = "Peterson"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoleId = 2,
+                            UserEmail = "Peter@gmail.com",
+                            UserFirstName = "Peter",
+                            UserLastName = "Simpson"
                         });
                 });
 

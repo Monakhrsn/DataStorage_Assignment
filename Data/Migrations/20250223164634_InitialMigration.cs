@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +34,8 @@ namespace Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Hour = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,12 +135,23 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "Price", "ProductName" },
+                table: "Customers",
+                columns: new[] { "Id", "CustomerEmail", "CustomerName" },
                 values: new object[,]
                 {
-                    { 1, 1000m, "Consult time" },
-                    { 2, 2000m, "Education" }
+                    { 2, "Rosa@gmail.com", "Rosa AB" },
+                    { 3, "Anna@gmail.com", "Anna Erikson" },
+                    { 4, "Liam@gmail.com", "Liam AB" },
+                    { 5, "Mahi@gmail.com", "Mahi Roohbakhsh" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Hour", "Price", "ProductName" },
+                values: new object[,]
+                {
+                    { 1, 0, 1000m, "Consulting" },
+                    { 2, 0, 2000m, "Education" }
                 });
 
             migrationBuilder.InsertData(
@@ -166,8 +178,10 @@ namespace Data.Migrations
                 columns: new[] { "Id", "RoleId", "UserEmail", "UserFirstName", "UserLastName" },
                 values: new object[,]
                 {
-                    { 1, 1, "Sara@gmail.com", "Sara", "McDonald" },
-                    { 2, 2, "John@gmail.com", "John", "Doe" }
+                    { 1, 1, "Sara@gmail.com", "Sara", "Mio" },
+                    { 2, 2, "John@gmail.com", "John", "Doe" },
+                    { 3, 1, "Alex@gmail.com", "Alex", "Peterson" },
+                    { 4, 2, "Peter@gmail.com", "Peter", "Simpson" }
                 });
 
             migrationBuilder.CreateIndex(

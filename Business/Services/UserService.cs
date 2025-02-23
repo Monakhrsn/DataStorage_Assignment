@@ -22,6 +22,7 @@ public class UserService(IUserRepository userRepository) : IUserService
             UserFirstName = form.FirstName,
             UserLastName = form.LastName,
             UserEmail = form.Email,
+            RoleId = form.RoleId,
         };
         
         var result = await _userRepository.CreateAsync(user);
@@ -55,9 +56,14 @@ public class UserService(IUserRepository userRepository) : IUserService
         ));
     }
     
-    public Task<bool> DeleteUserByIdAsync(int id)
+    public async Task<bool> DeleteUserByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var user = await GetUserEntityAsync(x => x.Id == id);
+        if (user == null)
+            return false;
+        
+        var result = await _userRepository.DeleteOneAsync(p => p.Id == user.Id);
+        return result;
     }
 
     public async Task<User?> UpdateUserAsync(UserUpdateForm form, int id)

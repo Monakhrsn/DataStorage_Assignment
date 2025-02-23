@@ -25,6 +25,10 @@ const CreateProject = () => {
   const [status, setStatus] = useState([]);
   const [validated, setValidated] = useState(false);
 
+  const onCancel = () => {
+   navigate("/projects")
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -289,7 +293,11 @@ const CreateProject = () => {
               ))}
             </Form.Select>
             <Col className="d-flex gap-2 mt-3">
-              <Button variant="secondary" className="rounded-pill px-3">
+              <Button 
+              variant="secondary" 
+              className="rounded-pill px-3"
+              onClick={onCancel}
+              >
                 Cancle
               </Button>
               <Button

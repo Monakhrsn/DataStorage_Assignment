@@ -70,28 +70,32 @@ const Projects = () => {
           <p>Error: {error.message}</p>
         </Alert>
       )}
-      <ListGroup as="ul">
-        {projects.map((project) => (
-          <ListGroup.Item
-            as="li"
-            action
-            key={project.id}
-            onClick={() => handleSelect(project.id)}
-            className="d-flex justify-content-between align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            {project.title}
-            <FontAwesomeIcon
-              icon={faTrashCan}
-              style={{ color: "red", cursor: "pointer" }}
-              onClick={(e) => {
-                e.stopPropagation(); // prevent parent list to click
-                handleDelete(project.id);
-              }}
-            />
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      {projects.length > 0 ? (
+        <ListGroup as="ul">
+          {projects.map((project) => (
+            <ListGroup.Item
+              as="li"
+              action
+              key={project.id}
+              onClick={() => handleSelect(project.id)}
+              className="d-flex justify-content-between align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              {project.title}
+              <FontAwesomeIcon
+                icon={faTrashCan}
+                style={{ color: "red", cursor: "pointer" }}
+                onClick={(e) => {
+                  e.stopPropagation(); // prevent parent list to click
+                  handleDelete(project.id);
+                }}
+              />
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      ) : (
+        <h2 className="mt-4">There is no available project yet! Create one!</h2>
+      )}
     </Container>
   );
 };
