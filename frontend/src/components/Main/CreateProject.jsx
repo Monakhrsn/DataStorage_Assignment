@@ -39,8 +39,7 @@ const CreateProject = () => {
     }
 
     setValidated(true);
-    console.log("Submitting Project Data:", JSON.stringify(formData, null, 2));
-    
+
     try {
       const res = await fetch("http://localhost:5018/api/projects", {
         method: "POST",
@@ -59,14 +58,11 @@ const CreateProject = () => {
         }),
       });
 
-      console.log(res)
-  
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       }
   
       const responseData = await res.json(); // get response data
-      console.log("Project created:", responseData);
 
       navigate("/projects");
       alert("Project created successfully!");
@@ -90,7 +86,6 @@ const CreateProject = () => {
       const fetchedResponse = await res.json();
       setStatus(fetchedResponse);
 
-      console.log(fetchedResponse);
     } catch (error) {
       setError(error);
     }
@@ -113,7 +108,6 @@ const CreateProject = () => {
       const fetchedResponse = await res.json();
       setProduct(fetchedResponse);
 
-      console.log("products: ", fetchedResponse);
     } catch (error) {
       setError(error);
     }
@@ -155,7 +149,6 @@ const CreateProject = () => {
 
       setCustomers(await res.json());
 
-      console.log("Customers:", customers);
     } catch (error) {
       setError(error);
     }

@@ -50,7 +50,6 @@ const UpdateProject = () => {
       }
 
       const fetchedProject = await res.json();
-      console.log("Fetched Project Data:", fetchedProject);
 
       setFormData({
         title: fetchedProject.title,
@@ -121,10 +120,8 @@ const UpdateProject = () => {
       if (!res.ok) {
         throw new Error(`Error updating project: ${res.status}`);
       }
-      console.log(res);
 
       const fetchedUpdatedResponse = await res.json();
-      console.log("Updated Project Data:", fetchedUpdatedResponse);
 
       setFormData({
         title: fetchedUpdatedResponse.title,

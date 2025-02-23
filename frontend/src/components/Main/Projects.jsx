@@ -11,7 +11,6 @@ const Projects = () => {
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
-    console.log(`Delete project with ID: ${id}`);
     if (!window.confirm("Are you sure that you want to delet the project?"))
       return;
 
@@ -28,7 +27,6 @@ const Projects = () => {
         prevProjects.filter((project) => project.id !== id)
       );
 
-      console.log(`Project with ID ${id} deleted successfully.`);
     } catch (error) {
       console.error("Error deleting project:", error);
       alert("Failed to delete project. Please try again.");
